@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mes favoris — MAELIE</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="maelie-v2.css">
+</head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html"
+          ><img src="img/logo.png" alt="MAELIE"
+        /></a>
+        <nav class="nav-links">
+          <a href="index.html">Accueil</a><a href="boutique.html">Boutique</a
+          ><a href="contact.html">Maison MAELIE</a
+          ><a href="contact.html#faq">FAQ</a>
+        </nav>
+        <div class="nav-actions">
+          <button
+            class="icon-btn menu-btn"
+            type="button"
+            aria-label="Ouvrir le menu"
+           data-menu>
+            <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg></button
+          ><button
+            class="icon-btn"
+            onclick="location.href = 'compte.html'"
+            type="button"
+            aria-label="Mon compte"
+          >
+            <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="8" r="3.5"></circle>
+              <path d="M5 20c.8-3.5 3.2-5.2 7-5.2s6.2 1.7 7 5.2"></path>
+            </svg></button
+          ><button
+            class="icon-btn"
+            onclick="location.href = 'favoris.html'"
+            type="button"
+            aria-label="Mes favoris"
+          >
+            <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.8 8.9c0 5-8.8 10-8.8 10s-8.8-5-8.8-10A4.7 4.7 0 0 1 8 4.2c1.7 0 3.1.9 4 2.1 0.9-1.2 2.3-2.1 4-2.1a4.7 4.7 0 0 1 4.8 4.7Z"
+              ></path></svg
+            ><span class="count" data-fav-count="">0</span></button
+          ><button
+            class="icon-btn"
+            onclick="location.href = 'panier.html'"
+            type="button"
+            aria-label="Mon panier"
+          >
+            <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 8.5h14l-1 11H6l-1-11Z"></path>
+              <path d="M9 9V7a3 3 0 0 1 6 0v2"></path></svg
+            ><span class="count" data-cart-count="">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <div class="announcement">
+      Livraison offerte dès 80 € · Retours sous 14 jours
+    </div>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <span class="eyebrow">Vos coups de cœur</span>
+          <h1>Mes favoris</h1>
+          <p class="muted">
+            Gardez une petite sélection des pièces qui vous font envie.
+          </p>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="product-grid" data-favorites></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast"></div>
+    <script src="js/data.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/favorites.js"></script>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <img src="img/logo.png" alt="MAELIE" />
+          <p>
+            Des essentiels féminins et délicats, choisis pour durer et faire
+            plaisir.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h3>Boutique</h3>
+          <a href="boutique.html">Tous les produits</a
+          ><a href="boutique.html?cat=Mode">Mode</a
+          ><a href="boutique.html?cat=Bijoux">Bijoux</a
+          ><a href="boutique.html?cat=Maison">Maison</a>
+        </div>
+        <div class="footer-col">
+          <h3>Service</h3>
+          <a href="contact.html#livraison">Livraison</a
+          ><a href="contact.html#retours">Retours</a
+          ><a href="contact.html#faq">FAQ</a><a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h3>Mon espace</h3>
+          <a href="compte.html">Mon compte</a
+          ><a href="favoris.html">Mes favoris</a
+          ><a href="panier.html">Mon panier</a>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 MAELIE. Tous droits réservés.</span
+        ><span>Une maison pensée avec douceur.</span>
+      </div>
+    </footer>
+    <script src="maelie-v2.js"></script>
+</body>
+</html>

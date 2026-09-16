@@ -1,0 +1,225 @@
+
+/* =========================================================
+   MAELIE V2 — premium motion & micro-interactions layer
+   Designed to sit on top of the existing prototype styles.
+   ========================================================= */
+
+:root {
+  --maelie-ease: cubic-bezier(.22, 1, .36, 1);
+  --maelie-fast: 180ms;
+  --maelie-slow: 700ms;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* ---------- page intro ---------- */
+body.maelie-v2 {
+  animation: maeliePageIn 520ms var(--maelie-ease) both;
+}
+
+@keyframes maeliePageIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ---------- accessible focus ---------- */
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* ---------- reveal on scroll ---------- */
+.maelie-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 760ms var(--maelie-ease),
+    transform 760ms var(--maelie-ease);
+  transition-delay: var(--maelie-delay, 0ms);
+}
+
+.maelie-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- premium section title line ---------- */
+.maelie-line-reveal {
+  position: relative;
+}
+
+.maelie-line-reveal::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  margin-top: .7rem;
+  background: currentColor;
+  opacity: .55;
+  transition: width 900ms var(--maelie-ease);
+}
+
+.maelie-line-reveal.is-visible::after {
+  width: 74px;
+}
+
+/* ---------- product card lift ---------- */
+:where(.product-card, .card, [class*="product-card"]) {
+  transition:
+    transform 360ms var(--maelie-ease),
+    box-shadow 360ms var(--maelie-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :where(.product-card, .card, [class*="product-card"]):hover {
+    transform: translateY(-5px);
+  }
+
+  :where(.product-card, .card, [class*="product-card"]) img {
+    transition: transform 700ms var(--maelie-ease);
+  }
+
+  :where(.product-card, .card, [class*="product-card"]):hover img {
+    transform: scale(1.035);
+  }
+}
+
+/* ---------- buttons ---------- */
+:where(.btn, button, .button) {
+  transition:
+    transform var(--maelie-fast) var(--maelie-ease),
+    box-shadow var(--maelie-fast) ease,
+    background-color var(--maelie-fast) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :where(.btn, .button):hover {
+    transform: translateY(-2px);
+  }
+}
+
+:where(.btn, button, .button):active {
+  transform: translateY(0) scale(.98);
+}
+
+/* ---------- favorite "pop" ---------- */
+.maelie-fav-pop {
+  animation: maelieFavPop 420ms var(--maelie-ease);
+}
+
+@keyframes maelieFavPop {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.28); }
+  65% { transform: scale(.94); }
+  100% { transform: scale(1); }
+}
+
+/* ---------- cart count pulse ---------- */
+.maelie-cart-pulse {
+  animation: maelieCartPulse 500ms var(--maelie-ease);
+}
+
+@keyframes maelieCartPulse {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.24); }
+  100% { transform: scale(1); }
+}
+
+/* ---------- image loading polish ---------- */
+img {
+  transition: opacity 320ms ease;
+}
+
+img.maelie-loading {
+  opacity: .35;
+}
+
+img.maelie-loaded {
+  opacity: 1;
+}
+
+/* ---------- soft hero ornaments ---------- */
+.maelie-orb {
+  position: absolute;
+  width: clamp(160px, 24vw, 380px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(3px);
+  opacity: .34;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,.8), rgba(255,255,255,0) 42%),
+    radial-gradient(circle, rgba(219,165,180,.52), rgba(219,165,180,0) 68%);
+  animation: maelieFloat 9s ease-in-out infinite;
+}
+
+.maelie-orb--one { top: 6%; left: -8%; }
+.maelie-orb--two { right: -9%; bottom: 4%; animation-delay: -4s; }
+
+@keyframes maelieFloat {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -12px, 0); }
+}
+
+/* ---------- mobile menu enhancement ---------- */
+@media (max-width: 760px) {
+  [data-menu-panel], .nav-menu, .mobile-menu {
+    transition:
+      opacity 260ms ease,
+      transform 360ms var(--maelie-ease),
+      visibility 260ms ease;
+  }
+
+  .maelie-menu-enhanced {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 1000;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-14px);
+  }
+
+  .maelie-menu-enhanced.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .maelie-menu-enhanced a {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 320ms ease, transform 420ms var(--maelie-ease);
+  }
+
+  .maelie-menu-enhanced.is-open a {
+    opacity: 1;
+    transform: none;
+  }
+
+  .maelie-menu-enhanced a:nth-child(1) { transition-delay: 50ms; }
+  .maelie-menu-enhanced a:nth-child(2) { transition-delay: 90ms; }
+  .maelie-menu-enhanced a:nth-child(3) { transition-delay: 130ms; }
+  .maelie-menu-enhanced a:nth-child(4) { transition-delay: 170ms; }
+  .maelie-menu-enhanced a:nth-child(5) { transition-delay: 210ms; }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
